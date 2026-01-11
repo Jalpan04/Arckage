@@ -50,6 +50,9 @@ ln -sf "$DIR/hypr" ~/.config/hypr
 ln -sf "$DIR/waybar" ~/.config/waybar
 ln -sf "$DIR/rofi" ~/.config/rofi
 # ln -sf "$DIR/neofetch" ~/.config/neofetch
+mkdir -p ~/.config/fastfetch
+ln -sf "$DIR/fastfetch/config.jsonc" ~/.config/fastfetch/config.jsonc
+
 mkdir -p ~/.config/alacritty
 ln -sf "$DIR/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
 
