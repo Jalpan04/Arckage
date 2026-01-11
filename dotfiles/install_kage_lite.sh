@@ -26,7 +26,12 @@ sudo pacman -S --needed --noconfirm \
     wl-clipboard \
     pipewire \
     pipewire-pulse \
-    wireplumber
+    wireplumber \
+    kitty \
+    sddm \
+    qt5-quickcontrols2 \
+    qt5-graphicaleffects \
+    qt5-svg
 
 # 2. Backup existing configs
 echo ":: Backing up existing configs to ~/.config.kage-backup..."
@@ -47,6 +52,20 @@ ln -sf "$DIR/rofi" ~/.config/rofi
 # ln -sf "$DIR/neofetch" ~/.config/neofetch
 mkdir -p ~/.config/alacritty
 ln -sf "$DIR/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
+
+# 4. SDDM Theme Setup
+echo ":: Setting up SSK (Samurai SDDM Kage)..."
+if [ ! -d "/usr/share/sddm/themes/sugar-dark" ]; then
+    echo "   Cloning Sugar Dark theme..."
+    sudo git clone https://github.com/MarianArlt/sddm-sugar-dark.git /usr/share/sddm/themes/sugar-dark
+fi
+
+echo "   Configuring SDDM..."
+sudo mkdir -p /etc/sddm.conf.d
+echo "[Theme]
+Current=sugar-dark" | sudo tee /etc/sddm.conf.d/theme.conf
+
+sudo systemctl enable sddm
 
 # 4. Cleanup
 echo ":: Disabling conflicting services (if any)..."
