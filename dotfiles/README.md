@@ -1,65 +1,36 @@
-# Dotfiles
-───────────────────────────────────────────────  
- °˖* ૮( • ᴗ ｡)っ🍸 shheersh - Dionysus vers. 1.0   
- ───────────────────────────────────────────────  
- ``` 
-                  ) ) )                     ) ) )
-                ( ( (                      ( ( (
-              ) ) )                       ) ) )
-           (~~~~~~~~~)                 (~~~~~~~~~)
-            |   А   |                   |   Б   |
-            |       |                   |       |
-            I      _._                  I       _._
-            I    /'   `\                I     /'   `\
-            I   |   N   |               I    |   N   |
-            f   |   |~~~~~~~~~~~~~~|    f    |    |~~~~~~~~~~~~~~|
-          .'    |   ||~~~~~~~~|    |  .'     |    | |~~~~~~~~|   |
-        /'______|___||__###___|____|/'_______|____|_|__###___|___|                  
-                 ) ) )                     ) ) )
-                ( ( (                      ( ( (
-              ) ) )                       ) ) )
-           (~~~~~~~~~)                 (~~~~~~~~~)
-            |   В   |                   |   Д   |
-            |       |                   |       |
-            I      _._                  I       _._
-            I    /'   `\                I     /'   `\
-            I   |   N   |               I    |   N   |
-            f   |   |~~~~~~~~~~~~~~|    f    |    |~~~~~~~~~~~~~~|
-          .'    |   ||~~~~~~~~|    |  .'     |    | |~~~~~~~~|   |
-        /'______|___||__###___|____|/'_______|____|_|__###___|___|
-``` 
-# Добро пожаловать, командир.  
-Rice config for **Hyprland** on Arch Linux,  
-running on my **ROG Zephyrus G15** (_dionysus_). 
+# KAGE (影) - Arch Linux Rice
 
-## Features
-  - Animated **Neofetch**  
-  - Dynamic **Waybar**  
-  - ASCII **Cava Visualizer**  
-  - Nord-inspired **neon-radioactive theme**  
+> **"Smool" Feudal Japan Neon Brutalism**
 
-## Demo
-![Hyprland Demo 2](../assets/demo.gif)
-### Neofetch
-![Neofetch](../assets/demo-neofetch.gif)
-### Eww
-![Eww HUD](../assets/demo-eww.png)
-### Rofi
-![Rofi Demo](../assets/demo-rofi.png)
-### Cava
-![Cava Visualizer](../assets/demo-cava.gif)
-### Alacritty + Waybar
-![Alacritty](../assets/demo-alacritty.png)
+A high-contrast, text-centric Hyprland theme designed for focus and speed.
+Inspired by the **Dionysus** rice by Pewdiepie-Archdaemon.
 
-##  Contents
-- [alacritty](alacritty/) → terminal config  
-- [cava](cava/) → audio visualizer  
-- [eww](eww/) → HUD & widgets  
-- [firefox](firefox/) → browser theme  
-- [hypr](hypr/) → window manager  
-- [neofetch](neofetch/) → animated fetch  
-- [rofi](rofi/) → launcher + powermenu  
-- [waybar](waybar/) → status bar  
-- [zsh](zsh/) → shell configs  
+![Kage Theme](./wallpapers/kage_wall.jpg)
 
+## 🎨 Aesthetic Philosophy
 
+- **Palette**: Pure Black (`#000000`), Neon Red (`#ff0033`), Cyber Yellow (`#ffcc00`), Cyan (`#00ffff`).
+- **Style**: "HUD" Wireframe. No blur. No shadows. Sharp pixels.
+- **Typography**: JetBrains Mono Nerd Font.
+- **Workspaces**: Kanji Numerals (`一`, `二`, `三`, `四`).
+
+## 🏯 Key Features
+
+- **Hyprland**: Pre-configured for tiling with 2px neon borders.
+- **Waybar**: custom "Wireframe" style with transparent backgrounds.
+- **Terminal**: Foot terminal with "Neon Shogun" color scheme.
+- **Shell**: Fish shell pre-configured with `up2date` helper.
+- **Login**: Custom SDDM theme (Sugar Dark modified).
+- **Apps**: High-contrast theming for **Firefox** and **Dolphin**.
+
+## 🛠️ Modifications from Original
+
+This fork completely overhauls the original Dionysus base:
+- **Removed**: Eww widgets, Cava visualizer, Zsh, Neofetch, Blur/Shadow effects.
+- **Added**: Fastfetch, Foot Terminal, Fish Shell, Custom "Kage" Wallpaper, Automated Installer (`install_kage_lite.sh`), `up2date` command.
+- **Refined**: Waybar modules rewritten for minimalism and performance.
+
+## ⚖️ Credits
+
+- **Original Base**: [Dionysus](https://github.com/pewdiepie-archdaemon/dionysus)
+- **Theme Design**: Kage (Shadow) Implementation
