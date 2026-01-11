@@ -19,9 +19,10 @@
   ],
   "modules-right": [
     "custom/mode",
-    "battery",
-    "pulseaudio",
-    "backlight"
+    "custom/microphone",
+    "custom/volume",
+    "custom/brightness",
+    "battery"
   ],
 
   // ── MODULES ───────────────────────────────────
@@ -33,8 +34,31 @@
 
   "custom/power": {
     "format": "[ ⏻ ]",
-    "on-click": "wlogout",
+    "on-click": "~/.config/waybar/scripts/powermenu.sh",
     "tooltip": false
+  },
+
+  "custom/microphone": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/mic.sh",
+    "interval": 1,
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "return-type": "json" // or plain text if script only echoes
+  },
+
+  "custom/volume": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/volume.sh",
+    "interval": 1,
+    "on-click": "pavucontrol",
+    "return-type": "json"
+  },
+
+  "custom/brightness": {
+      "format": "{}",
+      "exec": "~/.config/waybar/scripts/brightness.sh",
+      "interval": 2,
+      "return-type": "json"
   },
 
   "network": {

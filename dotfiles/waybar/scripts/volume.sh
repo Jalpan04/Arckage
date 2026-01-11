@@ -34,11 +34,11 @@ ascii_bar="[$bar$pad]"
 
 # Color logic
 if [ "$is_muted" = true ] || [ "$vol_int" -lt 10 ]; then
-  fg="#bf616a" # red
+  fg="#ff0033" # red
 elif [ "$vol_int" -lt 50 ]; then
-  fg="#fab387" # orange
+  fg="#ffcc00" # yellow
 else
-  fg="#56b6c2" # cyan
+  fg="#00ffff" # cyan
 fi
 
 # Tooltip text

@@ -70,11 +70,27 @@ window#waybar {
 #network { color: #00ffff; }
 #bluetooth { color: #00d7d7; }
 #battery { color: #00ff00; }
+#custom-power, #custom-mode {
+    color: #ff0033;
+    padding: 0 10px;
+    margin: 0 5px;
+    border: 1px solid #ff0033;
+}
+
+#custom-microphone, #custom-volume, #custom-brightness, #battery {
+    color: #00ffff;
+    padding: 0 10px;
+    margin: 0 5px;
+    border: 1px solid #00ffff;
+}
+
 #battery.warning { color: #ffff00; }
 #battery.critical { color: #ff0033; }
 
 #custom-mode {
-    color: #ff0033;
+    color: #ffcc00;
+    border-color: #ffcc00;
+    font-weight: bold;
     animation: blink 2s infinite;
 }
 
