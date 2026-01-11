@@ -34,60 +34,21 @@ sudo pacman -S --needed --noconfirm \
     qt5-graphicaleffects \
     qt5-svg \
     dolphin \
+    qt5-wayland \
     qt5ct \
     breeze-icons \
     firefox \
     hyprpaper \
     archlinux-wallpaper
 
-# 2. Backup existing configs
-echo ":: Backing up existing configs to ~/.config.kage-backup..."
-mkdir -p ~/.config.kage-backup
-mv ~/.config/hypr ~/.config.kage-backup/ 2>/dev/null || true
-mv ~/.config/waybar ~/.config.kage-backup/ 2>/dev/null || true
-mv ~/.config/alacritty ~/.config.kage-backup/ 2>/dev/null || true
-mv ~/.config/rofi ~/.config.kage-backup/ 2>/dev/null || true
-
-# 3. Link Configs
-echo ":: Linking Kage configs..."
-DIR=$(pwd)
-
-# Function to safely force link
-link_config() {
-    local target="$1"
-    local link_name="$2"
-    echo "   Linking $link_name -> $target"
-    rm -rf "$link_name"
-    ln -s "$target" "$link_name"
-}
-
-# Link Hyprland
-link_config "$DIR/hypr" ~/.config/hypr
-
-# Link Wallpapers
-mkdir -p ~/.config/wallpapers
-rm -f ~/.config/wallpapers/kage_wall.jpg
-ln -sf "$DIR/wallpapers/kage_wall.jpg" ~/.config/wallpapers/kage_wall.jpg
-
-# Link Waybar
-link_config "$DIR/waybar" ~/.config/waybar
-link_config "$DIR/rofi" ~/.config/rofi
-
-# Link Fastfetch
-mkdir -p ~/.config/fastfetch
-rm -f ~/.config/fastfetch/config.jsonc
-rm -f ~/.config/fastfetch/art.txt
-ln -sf "$DIR/fastfetch/config.jsonc" ~/.config/fastfetch/config.jsonc
-ln -sf "$DIR/fastfetch/art.txt" ~/.config/fastfetch/art.txt
-
-# Link Foot
-mkdir -p ~/.config/foot
-rm -f ~/.config/foot/foot.ini
-ln -sf "$DIR/foot/foot.ini" ~/.config/foot/foot.ini
+# ... (Previous code) ...
 
 # 5. Fish Shell Setup
 echo ":: Setting Fish as default shell..."
 sudo chsh -s /usr/bin/fish $USER
+mkdir -p ~/.config/fish
+echo "set -gx QT_QPA_PLATFORMTHEME qt5ct" > ~/.config/fish/config.fish
+echo "set -gx GTK_THEME Adwaita-dark" >> ~/.config/fish/config.fish
 
 # 6. SDDM Theme Setup
 echo ":: Setting up SSK (Samurai SDDM Kage)..."
@@ -136,10 +97,7 @@ if [ ! -d ~/.mozilla/firefox ]; then
     kill $FF_PID
 fi
 
-FF_PROFILE=$(find ~/.mozilla/firefox -maxdepth 1 -type d -name "*.default-release" | head -n 1)
-if [ -z "$FF_PROFILE" ]; then
-    FF_PROFILE=$(find ~/.mozilla/firefox -maxdepth 1 -type d -name "*.default" | head -n 1)
-fi
+FF_PROFILE=$(find ~/.mozilla/firefox -maxdepth 2 -name "prefs.js" | head -n 1 | xargs dirname)
 
 if [ -n "$FF_PROFILE" ]; then
     echo "   Found profile: $FF_PROFILE"
@@ -150,7 +108,7 @@ if [ -n "$FF_PROFILE" ]; then
     echo 'user_pref("browser.compactmode.show", true);' >> "$FF_PROFILE/user.js"
     echo 'user_pref("browser.uidensity", 1);' >> "$FF_PROFILE/user.js"
 
-    # Write CSS
+    # Write CSS (KAGE - DARK NEON BRUTALISM)
     echo '/* KAGE - Firefox Dark Mode */
 :root {
   --toolbar-bgcolor: #000000 !important;
@@ -158,10 +116,23 @@ if [ -n "$FF_PROFILE" ]; then
   --tab-selected-textcolor: #000000 !important;
   --chrome-content-separator-color: #ff0033 !important;
   --lwt-text-color: #00ffff !important;
+  --lwt-toolbar-field-background-color: #1a1a1a !important;
+  --lwt-toolbar-field-color: #ffffff !important;
+  --lwt-toolbar-field-border-color: #ff0033 !important;
 }
+
 #navigator-toolbox { background-color: #000000 !important; border-bottom: 2px solid #ff0033 !important; }
 .tab-background[selected="true"] { background: #ffcc00 !important; }
-.tab-label[selected="true"] { color: #000000 !important; font-weight: bold !important; }
+.tab-label[selected="true"] { color: #000000 !important; font-weight: bold !important; font-size: 14px !important; }
+.tab-background:not([selected="true"]) { background: #000000 !important; opacity: 0.7 !important; }
+.tab-label:not([selected="true"]) { color: #00ffff !important; }
+
+/* URL Bar */
+#urlbar-background { background-color: #1a1a1a !important; border: 1px solid #ff0033 !important; }
+#urlbar-input { color: #00ffff !important; }
+
+/* Sidebar */
+#sidebar-box { background-color: #000000 !important; border-right: 1px solid #ff0033 !important; }
 ' > "$FF_PROFILE/chrome/userChrome.css"
     echo "   Applied userChrome.css"
 else
