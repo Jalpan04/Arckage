@@ -1,90 +1,90 @@
 /* ───────────────────────────────────────────────
-   K A G E  (影)  -  Waybar CSS
+   K A G E  (影)  -  Waybar CSS (HUD Wireframe)
    Feudal Japan Neon Brutalism
    ─────────────────────────────────────────────── */
 
 * {
-  border: none;
-  border-radius: 0;
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 14px;
-  min-height: 0;
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 14px;
+    min-height: 0;
 }
 
 window#waybar {
-  background: rgba(0, 0, 0, 0.8); /* Semi-transparent Black */
-  color: #ffcc00; /* Cyber Yellow */
-  border-bottom: 2px solid #ff0033; /* Neon Red underline */
+    background: #000000;
+    color: #ffcc00; /* Cyber Yellow */
 }
 
-/* ── Workspaces ──────────────────────────────── */
-#workspaces {
-  background: transparent;
-  padding: 0 10px;
+/* ── MODULE CONTAINERS ───────────────────────── */
+
+.modules-left, .modules-center, .modules-right {
+    background: transparent;
+    padding: 0 5px;
 }
+
+/* Common style for standard modules to look like boxes */
+#clock,
+#custom-power,
+#network,
+#bluetooth,
+#pulseaudio.mute,
+#mpris,
+#custom-mode,
+#battery,
+#pulseaudio,
+#backlight,
+#workspaces button {
+    background: #000000;
+    color: #ffcc00;
+    border: 2px solid #00ffff; /* Neon Cyan Border */
+    padding: 0 10px;
+    margin: 0 4px;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3); /* Glow effect */
+}
+
+/* ── SPECIFIC MODULE STYLES ──────────────────── */
 
 #workspaces button {
-  padding: 0 10px;
-  background: transparent;
-  color: #00ffff; /* Cyan */
-  border-bottom: 2px solid transparent;
+    color: #00ffff; /* Cyan for inactive */
+    border-color: #00ffff;
 }
 
 #workspaces button.active {
-  color: #ff0033; /* Red Active */
-  border-bottom: 2px solid #ff0033;
+    color: #000000;
+    background: #ffcc00; /* Yellow background for active */
+    border-color: #ffcc00;
+    box-shadow: 0 0 10px #ffcc00;
 }
 
-#workspaces button:hover {
-  background: #1a1a1a;
-  color: #ffff00;
+#workspaces button.urgent {
+    background: #ff0033; /* Neon Red */
+    color: #ffffff;
+    border-color: #ff0033;
 }
 
-/* ── Modules ─────────────────────────────────── */
-#clock,
-#battery,
-#pulseaudio,
-#tray {
-  padding: 0 15px;
-  margin: 0;
-  background-color: transparent;
-  color: #ffcc00;
-}
+/* Text Colors */
+#clock { color: #ffb74d; } /* Orange-ish */
+#custom-power { color: #ff0033; } /* Red */
+#network { color: #00ffff; }
+#bluetooth { color: #00d7d7; }
+#battery { color: #00ff00; }
+#battery.warning { color: #ffff00; }
+#battery.critical { color: #ff0033; }
 
-#clock {
-  font-weight: bold;
-  color: #ff0033; /* Red clock */
-}
-
-#battery.charging,
-#battery.plugged {
-  color: #00ffff;
-}
-
-#battery.critical:not(.charging) {
-  background-color: #ff0033;
-  color: #000000;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+#custom-mode {
+    color: #ff0033;
+    animation: blink 2s infinite;
 }
 
 @keyframes blink {
-  to {
-    background-color: #000000;
-    color: #ff0033;
-  }
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
 }
 
 #pulseaudio.muted {
-  color: #666666;
-}
-
-/* ── Window Title ────────────────────────────── */
-#window {
-  color: #00ffff;
-  font-weight: bold;
-  padding: 0 20px;
+    color: #666666;
+    border-color: #666666;
 }

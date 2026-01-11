@@ -1,51 +1,102 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 34,
+  "height": 40,
   "spacing": 4,
-
+  "margin-top": 10,
+  "margin-left": 10,
+  "margin-right": 10,
   "modules-left": [
-    "hyprland/workspaces",
-    "hyprland/window"
+    "clock",
+    "custom/power",
+    "network",
+    "bluetooth",
+    "pulseaudio#mute",
+    "mpris"
   ],
-
   "modules-center": [
-    "clock"
+    "hyprland/workspaces"
   ],
-
   "modules-right": [
-    "pulseaudio",
+    "custom/mode",
     "battery",
-    "tray"
+    "pulseaudio",
+    "backlight"
   ],
 
-  // ── Workspaces ───────────────────────────────────────────────────
+  // ── MODULES ───────────────────────────────────
+
+  "clock": {
+    "format": "[ 🕑 {:%I:%M %p} ]",
+    "tooltip-format": "{:%Y-%m-%d}"
+  },
+
+  "custom/power": {
+    "format": "[ ⏻ ]",
+    "on-click": "wlogout",
+    "tooltip": false
+  },
+
+  "network": {
+    "format-wifi": "[  ]",
+    "format-ethernet": "[  ]",
+    "format-disconnected": "[  ]",
+    "tooltip-format": "{essid} ({signalStrength}%)"
+  },
+
+  "bluetooth": {
+    "format": "[  ]",
+    "format-disabled": "[  ]",
+    "on-click": "blueman-manager",
+    "tooltip-format": "{status}"
+  },
+
+  "pulseaudio#mute": {
+    "format": "[  ]",
+    "format-muted": "[  ]",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "tooltip": false
+  },
+
+  "mpris": {
+    "format": "[ {artist}: {title} ]",
+    "max-length": 40
+  },
+
   "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true,
-    "format": "{icon}",
+    "format": "[ {icon} ]",
+    "on-click": "activate",
     "format-icons": {
       "1": "一",
       "2": "二",
       "3": "三",
       "4": "四",
-      "9": "九",
-      "urgent": "⚠️",
-      "focused": "",
-      "default": ""
-    }
+      "urgent": "",
+      "active": "●",
+      "default": "○"
+    },
+    "sort-by-number": true
   },
 
-  "hyprland/window": {
-      "format": "[ {} ]",
-      "max-length": 50
+  "custom/mode": {
+    "format": "[ REACTOR ONLINE ]",
+    "tooltip": false
   },
 
-  // ── Clock ────────────────────────────────────────────────────────
-  "clock": {
-    "format": "{:%H:%M} 👺",
-    "tooltip-format": "{:%Y-%m-%d}",
-    "interval": 60
+  "battery": {
+    "format": "[ {icon} {capacity}% ]",
+    "format-charging": "[  {capacity}% ]",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "pulseaudio": {
+    "format": "[  {volume}% ]",
+    "format-muted": "[  MUTE ]",
+    "on-click": "pavucontrol"
+  },
+
+  "backlight": {
+    "format": "[  {percent}% ]"
   },
 
   // ── Audio ────────────────────────────────────────────────────────
