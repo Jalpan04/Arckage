@@ -50,31 +50,38 @@ mv ~/.config/rofi ~/.config.kage-backup/ 2>/dev/null || true
 
 # 3. Link Configs
 echo ":: Linking Kage configs..."
-# Assumes script is queued from dotfiles root
 DIR=$(pwd)
 
+# Function to safely force link
+link_config() {
+    local target="$1"
+    local link_name="$2"
+    echo "   Linking $link_name -> $target"
+    rm -rf "$link_name"
+    ln -s "$target" "$link_name"
+}
+
 # Link Hyprland
-ln -sf "$DIR/hypr" ~/.config/hypr
+link_config "$DIR/hypr" ~/.config/hypr
 
 # Link Wallpapers
 mkdir -p ~/.config/wallpapers
+rm -f ~/.config/wallpapers/kage_wall.jpg
 ln -sf "$DIR/wallpapers/kage_wall.jpg" ~/.config/wallpapers/kage_wall.jpg
 
-# Link Hyprpaper
-ln -sf "$DIR/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
-
 # Link Waybar
-ln -sf "$DIR/waybar" ~/.config/waybar
-ln -sf "$DIR/rofi" ~/.config/rofi
-# ln -sf "$DIR/neofetch" ~/.config/neofetch
+link_config "$DIR/waybar" ~/.config/waybar
+link_config "$DIR/rofi" ~/.config/rofi
+
+# Link Fastfetch
 mkdir -p ~/.config/fastfetch
+rm -f ~/.config/fastfetch/config.jsonc
 ln -sf "$DIR/fastfetch/config.jsonc" ~/.config/fastfetch/config.jsonc
 
+# Link Foot
 mkdir -p ~/.config/foot
+rm -f ~/.config/foot/foot.ini
 ln -sf "$DIR/foot/foot.ini" ~/.config/foot/foot.ini
-
-# mkdir -p ~/.config/alacritty
-# ln -sf "$DIR/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
 
 # 5. Fish Shell Setup
 echo ":: Setting Fish as default shell..."
@@ -105,8 +112,6 @@ ln -sf "$DIR/qt5ct/qt5ct.conf" ~/.config/qt5ct/qt5ct.conf
 ln -sf "$DIR/qt5ct/colors/Kage.conf" ~/.config/qt5ct/colors/Kage.conf
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-
-# GTK3
 # GTK3
 mkdir -p ~/.config/gtk-3.0
 echo "[Settings]
