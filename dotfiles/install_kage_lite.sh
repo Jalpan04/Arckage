@@ -35,7 +35,6 @@ sudo pacman -S --needed --noconfirm \
     qt5-svg \
     dolphin \
     qt5ct \
-    kvantum \
     breeze-icons \
     firefox \
     hyprpaper \
@@ -106,11 +105,6 @@ ln -sf "$DIR/qt5ct/qt5ct.conf" ~/.config/qt5ct/qt5ct.conf
 ln -sf "$DIR/qt5ct/colors/Kage.conf" ~/.config/qt5ct/colors/Kage.conf
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-# Kvantum (Better Qt Theming)
-echo ":: Setting up Kvantum..."
-mkdir -p ~/.config/Kvantum
-echo "[General]
-theme=KvAdaptaDark" > ~/.config/Kvantum/kvantum.kvconfig
 
 # GTK3
 # GTK3
