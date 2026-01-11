@@ -5,7 +5,7 @@
 A high-contrast, text-centric Hyprland theme designed for focus and speed.
 Inspired by the **Dionysus** rice by Pewdiepie-Archdaemon.
 
-![Kage Theme](./wallpapers/kage_wall.jpg)
+![Kage Theme](./dotfiles/wallpapers/kage_wall.jpg)
 
 ## 🎨 Aesthetic Philosophy
 
@@ -14,21 +14,25 @@ Inspired by the **Dionysus** rice by Pewdiepie-Archdaemon.
 - **Typography**: JetBrains Mono Nerd Font.
 - **Workspaces**: Kanji Numerals (`一`, `二`, `三`, `四`).
 
-## 🏯 Key Features
+## 🏯 Component Architecture
 
-- **Hyprland**: Pre-configured for tiling with 2px neon borders.
-- **Waybar**: custom "Wireframe" style with transparent backgrounds.
-- **Terminal**: Foot terminal with "Neon Shogun" color scheme.
-- **Shell**: Fish shell pre-configured with `up2date` helper.
-- **Login**: Custom SDDM theme (Sugar Dark modified).
-- **Apps**: High-contrast theming for **Firefox** and **Dolphin**.
+| Component | Choice | Customization |
+| :--- | :--- | :--- |
+| **Window Manager** | Hyprland | No blur/shadows, 2px neon gradients. `Alt` mod key. |
+| **Bar** | Waybar | Custom "Wireframe" CSS. Transparent background. |
+| **Terminal** | Foot | "Neon Shogun" scheme. Deprecated settings fixed. |
+| **Shell** | Fish | Custom `up2date` command. |
+| **Launcher** | Rofi | Minimal text list. "Samurai Prompt" style. |
+| **File Manager** | Dolphin | Custom Kage Qt5 theme. |
+| **Browser** | Firefox | `userChrome.css` injection for pitch black UI. |
+| **Display Manager** | SDDM | Sugar-Dark (Modified). |
 
 ## 🛠️ Modifications from Original
 
 This fork completely overhauls the original Dionysus base:
-- **Removed**: Eww widgets, Cava visualizer, Zsh, Neofetch, Blur/Shadow effects.
-- **Added**: Fastfetch, Foot Terminal, Fish Shell, Custom "Kage" Wallpaper, Automated Installer (`install_kage_lite.sh`), `up2date` command.
-- **Refined**: Waybar modules rewritten for minimalism and performance.
+- **Stripped**: Eww widgets, Cava, Zsh, Neofetch, Blur effects.
+- **Added**: Fastfetch (Custom art), Foot, Fish, Automated Installer, `up2date` auto-updater.
+- **Refined**: Redesigned Waybar modules for performance.
 
 ## ⚖️ Credits
 
