@@ -27,7 +27,8 @@ sudo pacman -S --needed --noconfirm \
     pipewire \
     pipewire-pulse \
     wireplumber \
-    kitty \
+    foot \
+    fish \
     sddm \
     qt5-quickcontrols2 \
     qt5-graphicaleffects \
@@ -53,10 +54,17 @@ ln -sf "$DIR/rofi" ~/.config/rofi
 mkdir -p ~/.config/fastfetch
 ln -sf "$DIR/fastfetch/config.jsonc" ~/.config/fastfetch/config.jsonc
 
-mkdir -p ~/.config/alacritty
-ln -sf "$DIR/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
+mkdir -p ~/.config/foot
+ln -sf "$DIR/foot/foot.ini" ~/.config/foot/foot.ini
 
-# 4. SDDM Theme Setup
+# mkdir -p ~/.config/alacritty
+# ln -sf "$DIR/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
+
+# 5. Fish Shell Setup
+echo ":: Setting Fish as default shell..."
+sudo chsh -s /usr/bin/fish $USER
+
+# 6. SDDM Theme Setup
 echo ":: Setting up SSK (Samurai SDDM Kage)..."
 if [ ! -d "/usr/share/sddm/themes/sugar-dark" ]; then
     echo "   Cloning Sugar Dark theme..."
