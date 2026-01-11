@@ -79,7 +79,7 @@
   },
 
   "custom/mode": {
-    "format": "[ REACTOR ONLINE ]",
+    "format": "[ SYSTEM READY ]",
     "tooltip": false
   },
 

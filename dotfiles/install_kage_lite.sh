@@ -35,7 +35,9 @@ sudo pacman -S --needed --noconfirm \
     qt5-svg \
     dolphin \
     qt5ct \
+    kvantum \
     breeze-icons \
+    firefox \
     archlinux-wallpaper
 
 # 2. Backup existing configs
@@ -93,6 +95,12 @@ ln -sf "$DIR/qt5ct/qt5ct.conf" ~/.config/qt5ct/qt5ct.conf
 ln -sf "$DIR/qt5ct/colors/Kage.conf" ~/.config/qt5ct/colors/Kage.conf
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+# Kvantum (Better Qt Theming)
+echo ":: Setting up Kvantum..."
+mkdir -p ~/.config/Kvantum
+echo "[General]
+theme=KvAdaptaDark" > ~/.config/Kvantum/kvantum.kvconfig
+
 # GTK3
 # GTK3
 mkdir -p ~/.config/gtk-3.0
@@ -104,6 +112,49 @@ gtk-font-name=JetBrainsMono Nerd Font 11" > ~/.config/gtk-3.0/settings.ini
 
 # Qt5 (for Dolphin)
 echo "export QT_QPA_PLATFORMTHEME=qt5ct" >> ~/.profile
+
+# Firefox Dark Theme (userChrome.css)
+echo ":: Configuring Firefox Dark Theme..."
+# We need to find the profile folder. This is tricky if FF hasn't run.
+# We'll create a default profile if it doesn't exist.
+if [ ! -d ~/.mozilla/firefox ]; then
+    firefox --headless --screenshot google.com 2>/dev/null &
+    FF_PID=$!
+    sleep 5
+    kill $FF_PID
+fi
+
+FF_PROFILE=$(find ~/.mozilla/firefox -maxdepth 1 -type d -name "*.default-release" | head -n 1)
+if [ -z "$FF_PROFILE" ]; then
+    FF_PROFILE=$(find ~/.mozilla/firefox -maxdepth 1 -type d -name "*.default" | head -n 1)
+fi
+
+if [ -n "$FF_PROFILE" ]; then
+    echo "   Found profile: $FF_PROFILE"
+    mkdir -p "$FF_PROFILE/chrome"
+    
+    # Enable userChrome.css
+    echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "$FF_PROFILE/user.js"
+    echo 'user_pref("browser.compactmode.show", true);' >> "$FF_PROFILE/user.js"
+    echo 'user_pref("browser.uidensity", 1);' >> "$FF_PROFILE/user.js"
+
+    # Write CSS
+    echo '/* KAGE - Firefox Dark Mode */
+:root {
+  --toolbar-bgcolor: #000000 !important;
+  --tab-selected-bgcolor: #ffcc00 !important;
+  --tab-selected-textcolor: #000000 !important;
+  --chrome-content-separator-color: #ff0033 !important;
+  --lwt-text-color: #00ffff !important;
+}
+#navigator-toolbox { background-color: #000000 !important; border-bottom: 2px solid #ff0033 !important; }
+.tab-background[selected="true"] { background: #ffcc00 !important; }
+.tab-label[selected="true"] { color: #000000 !important; font-weight: bold !important; }
+' > "$FF_PROFILE/chrome/userChrome.css"
+    echo "   Applied userChrome.css"
+else
+    echo "   WARNING: Could not find Firefox profile. Run Firefox once and re-run script."
+fi
 
 # 4. Cleanup
 echo ":: Disabling conflicting services (if any)..."
