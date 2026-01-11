@@ -32,7 +32,11 @@ sudo pacman -S --needed --noconfirm \
     sddm \
     qt5-quickcontrols2 \
     qt5-graphicaleffects \
-    qt5-svg
+    qt5-svg \
+    dolphin \
+    qt5ct \
+    breeze-icons \
+    archlinux-wallpaper
 
 # 2. Backup existing configs
 echo ":: Backing up existing configs to ~/.config.kage-backup..."
@@ -77,6 +81,22 @@ echo "[Theme]
 Current=sugar-dark" | sudo tee /etc/sddm.conf.d/theme.conf
 
 sudo systemctl enable sddm
+
+# 7. System Polish (Hostname & Theming)
+echo ":: Setting Hostname to 'archkage'..."
+sudo hostnamectl set-hostname archkage
+
+echo ":: Configuring Dark GTK/Qt Themes..."
+# GTK3
+mkdir -p ~/.config/gtk-3.0
+echo "[Settings]
+gtk-application-prefer-dark-theme=1
+gtk-theme-name=Adwaita-dark
+gtk-icon-theme-name=Adwaita
+gtk-font-name=JetBrainsMono Nerd Font 11" > ~/.config/gtk-3.0/settings.ini
+
+# Qt5 (for Dolphin)
+echo "export QT_QPA_PLATFORMTHEME=qt5ct" >> ~/.profile
 
 # 4. Cleanup
 echo ":: Disabling conflicting services (if any)..."
