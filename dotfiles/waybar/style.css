@@ -13,8 +13,9 @@
 }
 
 window#waybar {
-    background: #000000;
+    background: rgba(0, 0, 0, 0.1); /* Transparent for Wireframe/HUD effect */
     color: #ffcc00; /* Cyber Yellow */
+    border-bottom: 1px solid rgba(255, 0, 51, 0.5); /* Faint Red Bottom Line */
 }
 
 /* ── MODULE CONTAINERS ───────────────────────── */
