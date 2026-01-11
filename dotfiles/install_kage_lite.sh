@@ -143,6 +143,10 @@ fi
 echo ":: Disabling conflicting services (if any)..."
 # No heavy services installed in this lite version
 
+echo ":: Restarting Hyprpaper to apply wallpaper..."
+killall hyprpaper 2>/dev/null || true
+hyprpaper & 2>/dev/null
+
 echo "👺 KAGE INSTALLED."
 echo "   Press SUPER + M to exit Hyprland if needed."
 echo "   Restart Hyprland to apply changes."
