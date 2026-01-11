@@ -46,9 +46,12 @@ sudo pacman -S --needed --noconfirm \
 # 5. Fish Shell Setup
 echo ":: Setting Fish as default shell..."
 sudo chsh -s /usr/bin/fish $USER
-mkdir -p ~/.config/fish
+mkdir -p ~/.config/fish/functions
 echo "set -gx QT_QPA_PLATFORMTHEME qt5ct" > ~/.config/fish/config.fish
 echo "set -gx GTK_THEME Adwaita-dark" >> ~/.config/fish/config.fish
+
+# Link up2date function
+ln -sf "$DIR/fish/functions/up2date.fish" ~/.config/fish/functions/up2date.fish
 
 # 6. SDDM Theme Setup
 echo ":: Setting up SSK (Samurai SDDM Kage)..."
@@ -142,10 +145,6 @@ fi
 # 4. Cleanup
 echo ":: Disabling conflicting services (if any)..."
 # No heavy services installed in this lite version
-
-echo ":: Restarting Hyprpaper to apply wallpaper..."
-killall hyprpaper 2>/dev/null || true
-hyprpaper & 2>/dev/null
 
 echo "👺 KAGE INSTALLED."
 echo "   Press SUPER + M to exit Hyprland if needed."
