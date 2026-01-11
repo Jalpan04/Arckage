@@ -15,7 +15,7 @@ sudo pacman -S --needed --noconfirm \
     waybar \
     alacritty \
     rofi \
-    neofetch \
+    fastfetch \
     ttf-jetbrains-mono-nerd \
     thunar \
     feh \
@@ -44,7 +44,7 @@ DIR=$(pwd)
 ln -sf "$DIR/hypr" ~/.config/hypr
 ln -sf "$DIR/waybar" ~/.config/waybar
 ln -sf "$DIR/rofi" ~/.config/rofi
-ln -sf "$DIR/neofetch" ~/.config/neofetch
+# ln -sf "$DIR/neofetch" ~/.config/neofetch
 mkdir -p ~/.config/alacritty
 ln -sf "$DIR/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
 
