@@ -87,6 +87,13 @@ echo ":: Setting Hostname to 'archkage'..."
 sudo hostnamectl set-hostname archkage
 
 echo ":: Configuring Dark GTK/Qt Themes..."
+# QT5CT (Dolphin Kage Theme)
+mkdir -p ~/.config/qt5ct/colors
+ln -sf "$DIR/qt5ct/qt5ct.conf" ~/.config/qt5ct/qt5ct.conf
+ln -sf "$DIR/qt5ct/colors/Kage.conf" ~/.config/qt5ct/colors/Kage.conf
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+# GTK3
 # GTK3
 mkdir -p ~/.config/gtk-3.0
 echo "[Settings]
