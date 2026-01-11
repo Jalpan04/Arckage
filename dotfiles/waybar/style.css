@@ -37,12 +37,12 @@ window#waybar {
 #pulseaudio,
 #backlight,
 #workspaces button {
-    background: #000000;
+    background: transparent; /* Wireframe look */
     color: #ffcc00;
     border: 2px solid #00ffff; /* Neon Cyan Border */
     padding: 0 10px;
     margin: 0 4px;
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3); /* Glow effect */
+    box-shadow: none; /* Removed glow to reduce visual noise */
 }
 
 /* ── SPECIFIC MODULE STYLES ──────────────────── */

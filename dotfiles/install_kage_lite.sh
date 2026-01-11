@@ -76,7 +76,9 @@ link_config "$DIR/rofi" ~/.config/rofi
 # Link Fastfetch
 mkdir -p ~/.config/fastfetch
 rm -f ~/.config/fastfetch/config.jsonc
+rm -f ~/.config/fastfetch/art.txt
 ln -sf "$DIR/fastfetch/config.jsonc" ~/.config/fastfetch/config.jsonc
+ln -sf "$DIR/fastfetch/art.txt" ~/.config/fastfetch/art.txt
 
 # Link Foot
 mkdir -p ~/.config/foot

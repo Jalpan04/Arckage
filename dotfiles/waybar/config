@@ -96,7 +96,7 @@
       "3": "三",
       "4": "四",
       "urgent": "",
-      "active": "●",
+      "active": "一",
       "default": "○"
     },
     "sort-by-number": true
