@@ -38,6 +38,7 @@ sudo pacman -S --needed --noconfirm \
     kvantum \
     breeze-icons \
     firefox \
+    hyprpaper \
     archlinux-wallpaper
 
 # 2. Backup existing configs
@@ -53,7 +54,17 @@ echo ":: Linking Kage configs..."
 # Assumes script is queued from dotfiles root
 DIR=$(pwd)
 
+# Link Hyprland
 ln -sf "$DIR/hypr" ~/.config/hypr
+
+# Link Wallpapers
+mkdir -p ~/.config/wallpapers
+ln -sf "$DIR/wallpapers/kage_wall.jpg" ~/.config/wallpapers/kage_wall.jpg
+
+# Link Hyprpaper
+ln -sf "$DIR/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
+
+# Link Waybar
 ln -sf "$DIR/waybar" ~/.config/waybar
 ln -sf "$DIR/rofi" ~/.config/rofi
 # ln -sf "$DIR/neofetch" ~/.config/neofetch
