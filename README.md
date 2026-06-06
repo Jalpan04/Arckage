@@ -1,5 +1,7 @@
 # KAGE (影) - Arch Linux Rice
 
+![GitHub top language](https://img.shields.io/github/languages/top/Jalpan04/Arckage) ![GitHub repo size](https://img.shields.io/github/repo-size/Jalpan04/Arckage) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+
 > **"Smool" Feudal Japan Neon Brutalism**
 
 A high-contrast, text-centric Hyprland theme designed for focus and speed.
