@@ -38,3 +38,7 @@ This fork completely overhauls the original Dionysus base:
 
 - **Original Base**: [Dionysus](https://github.com/pewdiepie-archdaemon/dionysus)
 - **Theme Design**: Kage (Shadow) Implementation
+
+## License
+
+This project is licensed under the Apache-2.0 License - see the [LICENSE](LICENSE) file for details.
